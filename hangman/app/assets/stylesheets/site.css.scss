@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
 .container {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -8,20 +10,26 @@
   /*border: 1px solid #000;*/
 }
 
-.hangman {
-  /*HANGMAN STYLES*/
+.message {
+  margin-top: 45px;
+  font-family: 'Lobster', cursive;
 }
 
-.message {
-  margin-top: 40px;
+.sub-msg {
+  font-family: Helvetica
 }
 
 .word-form {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+.save-new {
+  background-color: #FD304D;
+  color: #FFF;
 }
 
 .letters {
-  margin-top: 40px;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 
@@ -34,6 +42,8 @@
 
 .letter-btn {
   width: 100%;
+  background-color: #4850D5;
+  color: #FFF;
 }
 
 .char-box {
@@ -54,6 +64,15 @@
   display: inline-block;
   border-bottom: 1px solid black;
   margin-right: 5px;
+}
+
+.msg {
+  font-family: 'Lobster', cursive;
+}
+
+.saved-word {
+  color: #4850D5;
+  font-family: Helvetica
 }
 
 .restart {

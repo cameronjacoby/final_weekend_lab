@@ -5,43 +5,47 @@ HangmanApp = angular.module "HangmanApp", []
 HangmanApp.controller "IndexCtrl", ['$scope', ($scope) ->
 
   $scope.submitWord = ->
-    # hide submit form
-    $scope.submitted = true
-    # hide welcome message
-    $scope.welcome = true
-    # hide new game message
-    $scope.newMsg = false
-    # show counter for remaining guesses
-    $scope.counter = true
+    if $scope.secretWord.length > 2 && $scope.secretWord.length <= 12
+      # hide submit form
+      $scope.submitted = true
+      # hide welcome message
+      $scope.welcome = true
+      # hide new game message
+      $scope.newMsg = false
+      # show counter for remaining guesses
+      $scope.counter = true
 
-    # reset guess count
-    $scope.count = 0
+      # reset guess count
+      $scope.count = 0
 
-    # convert secretWord to lowercase and save result
-    $scope.savedWord = $scope.secretWord.toLowerCase()
+      # convert secretWord to lowercase and save result
+      $scope.savedWord = $scope.secretWord.toLowerCase()
 
-    # clear secretWord
-    $scope.secretWord = ''
+      # clear secretWord
+      $scope.secretWord = ''
 
-    # split savedWord into an array
-    $scope.characters = $scope.savedWord.split("")
+      # split savedWord into an array
+      $scope.characters = $scope.savedWord.split("")
 
-    # create letters array
-    $scope.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-                    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+      # create letters array
+      $scope.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+                      "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-    # set guessed chars array
-    $scope.guessedChars = []
-    # set spaces array
-    $scope.spaces = []
+      # set guessed chars array
+      $scope.guessedChars = []
+      # set spaces array
+      $scope.spaces = []
 
-    a = 0
-    while a < $scope.characters.length
-      $scope.spaces.push("")
-      a += 1
+      a = 0
+      while a < $scope.characters.length
+        $scope.spaces.push("")
+        a += 1
 
-    # set hangman
-    $scope.hangman = {}
+      # set hangman
+      $scope.hangman = {}
+
+    else
+      $scope.secretWord = "Your word must be between 3-12 characters."
 
   $scope.guess = (letter) ->
     # hide the letter clicked

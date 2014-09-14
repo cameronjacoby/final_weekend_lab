@@ -10,25 +10,25 @@
                       ,40 240
                       ,40 240
                       90"
-                    style="fill:none;stroke:black;stroke-width:15" />
+                    style="fill:none;stroke:#333333;stroke-width:15" />
 
         <!-- head -->
-        <circle ng-show="hangman[1]" cx="240" cy="130" r="40" style="fill:none;stroke:black;stroke-width:3" />
+        <circle ng-show="hangman[1]" cx="240" cy="130" r="40" style="fill:none;stroke:#333333;stroke-width:3" />
         
         <!-- body -->
-        <line ng-show="hangman[2]" x1="240" y1="170" x2="240" y2="300" style="stroke:black;stroke-width:3"/>
+        <line ng-show="hangman[2]" x1="240" y1="170" x2="240" y2="300" style="stroke:#333333;stroke-width:3"/>
 
         <!-- left arm -->
-        <line ng-show="hangman[3]" x1="240" y1="240" x2="180" y2="190" style="stroke:black;stroke-width:3"/>
+        <line ng-show="hangman[3]" x1="240" y1="240" x2="180" y2="190" style="stroke:#333333;stroke-width:3"/>
 
         <!-- right arm -->
-        <line ng-show="hangman[4]" x1="240" y1="240" x2="300" y2="190" style="stroke:black;stroke-width:3"/>
+        <line ng-show="hangman[4]" x1="240" y1="240" x2="300" y2="190" style="stroke:#333333;stroke-width:3"/>
 
         <!-- left leg -->
-        <line ng-show="hangman[5]" x1="180" y1="370" x2="240" y2="300" style="stroke:black;stroke-width:3"/>
+        <line ng-show="hangman[5]" x1="180" y1="370" x2="240" y2="300" style="stroke:#333333;stroke-width:3"/>
 
         <!-- right leg -->
-        <line ng-show="hangman[6]" x1="300" y1="370" x2="240" y2="300" style="stroke:black;stroke-width:3"/>
+        <line ng-show="hangman[6]" x1="300" y1="370" x2="240" y2="300" style="stroke:#333333;stroke-width:3"/>
 
       </svg>
     </div>
@@ -36,6 +36,7 @@
     <div class="col-md-4">
       <div ng-hide="welcome" class="message">
         <h2>Welcome to Hangman!</h2>
+        <span class="sub-msg"><p>Choose a word for your opponent to guess.</p></span>
       </div>
 
       <div ng-show="newMsg" class="message">
@@ -44,16 +45,16 @@
 
       <form ng-submit="submitWord()" ng-hide="submitted" class="word-form">
         <p>
-          <input type="text" ng-model="secretWord" class="form-control" placeholder="Type a word" autofocus>
+          <input type="text" ng-model="secretWord" class="form-control" placeholder="Type your word here" autofocus>
         </p>
         <p>
-          <button class="btn btn-danger">Save Word</button>
+          <button class="btn save-new">Save Word</button>
         </p>
       </form>
       
       <div class="letters">
         <div ng-repeat="letter in letters" class="letter">
-          <button ng-click ="guess(letter)" ng-hide="clicked" class="btn btn-primary letter-btn">{{letter}}</button>
+          <button ng-click ="guess(letter)" ng-hide="clicked" class="btn letter-btn">{{letter}}</button>
         </div>
       </div>
 
@@ -69,13 +70,13 @@
         </div>
       </div>
 
-      <div ng-show="counter"><h3>Guesses left: {{6 - count}}</h3></div>
+      <div ng-show="counter" class="msg"><h3>Remaining guesses: {{6 - count}}</h3></div>
 
-      <div ng-show="winMsg"><h3>Congrats! You guessed the word!</h3></div>
+      <div ng-show="winMsg" class="msg"><h3>Congrats, you guessed the word!</h3></div>
 
-      <div ng-show="loseMsg"><h3>Sorry, you're out of guesses! The correct word was {{savedWord}}.</h3></div>
+      <div ng-show="loseMsg" class="msg"><h3>Sorry, you're out of guesses! The correct word was <span class="saved-word">{{savedWord}}</span>.</h3></div>
 
-      <button ng-click="newGame()" ng-show="restart" class="btn btn-danger restart">Start New Game</button>
+      <button ng-click="newGame()" ng-show="restart" class="btn save-new restart">Start New Game</button>
 
     </div>
     <div class="col-md-2"></div>
