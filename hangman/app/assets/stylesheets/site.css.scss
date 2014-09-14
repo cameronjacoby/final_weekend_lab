@@ -1,3 +1,61 @@
-// Place all the styles related to the site controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.box-left {
+  height: 500px;
+  /*border: 1px solid #000;*/
+}
+
+.hangman {
+  /*HANGMAN STYLES*/
+}
+
+.message {
+  margin-top: 40px;
+}
+
+.word-form {
+  margin-top: 20px;
+}
+
+.letters {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.letter {
+  width: 34px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.letter-btn {
+  width: 100%;
+}
+
+.char-box {
+  width: 25px;
+  display: inline-block;
+  /*border-bottom: 1px solid black;*/
+  margin-right: 5px;
+  margin-bottom: -10px;
+}
+
+.char h3 {
+  margin-left: 4px;
+}
+
+.space {
+  width: 25px;
+  height: 2px;
+  display: inline-block;
+  border-bottom: 1px solid black;
+  margin-right: 5px;
+}
+
+.restart {
+  margin-top: 20px;
+}

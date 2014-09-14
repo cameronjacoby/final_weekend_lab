@@ -1,2 +1,83 @@
-<h1>Site#index</h1>
-<p>Find me in app/views/site/index.html.erb</p>
+<div ng-controller="IndexCtrl">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4 box-left">
+      <svg width="500" height="550" class="hangman">
+        <polyline points="330
+                      ,440 40
+                      ,440 90
+                      ,440 90
+                      ,40 240
+                      ,40 240
+                      90"
+                    style="fill:none;stroke:black;stroke-width:15" />
+
+        <!-- head -->
+        <circle ng-show="hangman[1]" cx="240" cy="130" r="40" style="fill:none;stroke:black;stroke-width:3" />
+        
+        <!-- body -->
+        <line ng-show="hangman[2]" x1="240" y1="170" x2="240" y2="300" style="stroke:black;stroke-width:3"/>
+
+        <!-- left arm -->
+        <line ng-show="hangman[3]" x1="240" y1="240" x2="180" y2="190" style="stroke:black;stroke-width:3"/>
+
+        <!-- right arm -->
+        <line ng-show="hangman[4]" x1="240" y1="240" x2="300" y2="190" style="stroke:black;stroke-width:3"/>
+
+        <!-- left leg -->
+        <line ng-show="hangman[5]" x1="180" y1="370" x2="240" y2="300" style="stroke:black;stroke-width:3"/>
+
+        <!-- right leg -->
+        <line ng-show="hangman[6]" x1="300" y1="370" x2="240" y2="300" style="stroke:black;stroke-width:3"/>
+
+      </svg>
+    </div>
+
+    <div class="col-md-4">
+      <div ng-hide="welcome" class="message">
+        <h2>Welcome to Hangman!</h2>
+      </div>
+
+      <div ng-show="newMsg" class="message">
+        <h3>New game! Choose a new word for your opponent to guess.</h3>
+      </div>
+
+      <form ng-submit="submitWord()" ng-hide="submitted" class="word-form">
+        <p>
+          <input type="text" ng-model="secretWord" class="form-control" placeholder="Type a word" autofocus>
+        </p>
+        <p>
+          <button class="btn btn-danger">Save Word</button>
+        </p>
+      </form>
+      
+      <div class="letters">
+        <div ng-repeat="letter in letters" class="letter">
+          <button ng-click ="guess(letter)" ng-hide="clicked" class="btn btn-primary letter-btn">{{letter}}</button>
+        </div>
+      </div>
+
+      <div>
+          <div ng-repeat="guessedChar in guessedChars track by $index" class="char-box">
+          <span class="char"><h3>{{guessedChar}}</h3></span>
+        </div>
+      </div>
+      
+      <div>
+        <div ng-repeat="space in spaces track by $index" class="space">
+          <h3>{{space}}</h3>
+        </div>
+      </div>
+
+      <div ng-show="counter"><h3>Guesses left: {{6 - count}}</h3></div>
+
+      <div ng-show="winMsg"><h3>Congrats! You guessed the word!</h3></div>
+
+      <div ng-show="loseMsg"><h3>Sorry, you're out of guesses! The correct word was {{savedWord}}.</h3></div>
+
+      <button ng-click="newGame()" ng-show="restart" class="btn btn-danger restart">Start New Game</button>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
